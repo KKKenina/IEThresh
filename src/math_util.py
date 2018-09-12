@@ -5,7 +5,20 @@ import pickle
 
 
 
-beta_dic = {}
+"""
+Load the beta distribution dictionary from txt into python
+:return: None
+"""
+try:
+    with open('beta_dic.txt','rb') as f:
+        beta_dic = pickle.load(f)
+        if not isinstance(beta_dic, dict):
+            beta_dic = {}
+except EOFError:
+    beta_dic = {}
+
+print('beta_ab dictionary successful initialization')
+
 
 @jit
 def new_a_b(a, b, c, d, z):
@@ -94,7 +107,6 @@ def h_function(I):
 
 def _test_math_util():
     load_beta_dic()
-    beta_ab_distrib = beta_dic
     a = 1
     b = 1
     I_ab = Beta_ab_cdf(a, b)

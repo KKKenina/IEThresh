@@ -67,9 +67,11 @@ def Opt_KG_experiment():
     save_beta_dic()
     # plot
     plt.figure()
-    plt.plot(Budget_T, accuracy_)
+    plt.plot(Budget_T, accuracy_, color = 'red', linewidth = 2.0, marker = 'D', fillstyle = 'full')
     plt.xlabel('Budget')
     plt.ylabel('accuracy')
+    # set y-axis locations and labels
+    plt.yticks(np.arange(0,1,0.05))
     plt.title('Opt-KG on RTE')
     plt.show()
 
